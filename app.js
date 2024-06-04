@@ -7,11 +7,11 @@ app.use(cors());
 
 const userRoute = require("./routes/user.route");
 const productRoute = require("./routes/product.route");
-const upcommingRoute = require("./routes/upcomming.route");
+// const upcommingRoute = require("./routes/upcomming.route");
 
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/product", productRoute);
-app.use("/api/v1/upcomming", upcommingRoute);
+// app.use("/api/v1/upcomming", upcommingRoute);
 
 app.get("/", (req, res) => {
   res.send("Cars hat is working");
