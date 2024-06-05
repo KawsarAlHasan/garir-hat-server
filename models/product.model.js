@@ -70,5 +70,3 @@ const ProductSchema = mongoose.Schema(
 
 const Product = mongoose.model("Products", ProductSchema);
 module.exports = Product;
-
-// Do you need to add anything other than name, price, quantity, categories, subcategories, brand, model, year of manufacture, kmRun, engine capacity, body type, transmission, description, status, and supplier?

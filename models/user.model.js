@@ -28,11 +28,7 @@ const UserSchema = mongoose.Schema(
     },
     confirmPassword: {},
     contactNumber: {},
-    role: {
-      type: String,
-      enum: ["user", "vendere", "admin"],
-      default: "user",
-    },
+
     status: {
       type: String,
       default: "active",
