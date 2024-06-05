@@ -19,6 +19,14 @@ const { dbConnect } = require("./utils/dbConnect");
 // database connection
 dbConnect();
 
+// Link: https://garir-hat-server.onrender.com
+
+// Default Admin: {
+//   "name": "Update admin",
+//   "email": "admin2@gmail.com",
+//   "password": "123457"
+// }
+
 // server
 const port = process.env.PORT || 5100;
 
