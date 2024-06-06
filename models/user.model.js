@@ -40,9 +40,6 @@ const UserSchema = mongoose.Schema(
     address: String,
     country: String,
     reletionship: String,
-    passwordChangedAt: Date,
-    passwordResetToken: String,
-    passwordResetExpires: Date,
   },
   { timestams: true }
 );

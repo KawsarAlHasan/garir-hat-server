@@ -21,10 +21,44 @@ exports.createProduct = async (req, res, next) => {
 // get all Products
 exports.getAllProducts = async (req, res, next) => {
   try {
-    const result = await Product.find({});
+    //{price:{$gt:3000}}
+
+    let filters = { ...req.query };
+
+    const excludeFields = ["sort", "page", "limit"];
+    excludeFields.forEach((field) => delete filters[field]);
+
+    let filtersSrting = JSON.stringify(filters);
+    filtersSrting = filtersSrting.replace(
+      /\b(gt|lt|gte|lte)\b/g,
+      (match) => `$${match}`
+    );
+
+    filters = JSON.parse(filtersSrting);
+
+    const queries = {};
+
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(",").join(" ");
+      queries.sortBy = sortBy;
+    }
+
+    if (req.query.page) {
+      const { page = 1, limit = 2 } = req.query;
+      const skip = (page - 1) * parseInt(limit);
+      queries.skip = skip;
+      queries.limit = parseInt(limit);
+    }
+
+    const result = await Product.find(filters)
+      .skip(queries.skip)
+      .limit(queries.limit)
+      .sort(queries.sortBy);
+    const totalProducts = await Product.countDocuments(filters);
+    const pageCount = Math.ceil(totalProducts / queries.limit);
     res.status(200).json({
       status: "Success",
-      data: result,
+      data: { totalProducts, pageCount, result },
     });
   } catch (error) {
     res.status(400).json({
