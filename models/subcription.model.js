@@ -2,15 +2,9 @@ const mongoose = require("mongoose");
 
 const SubcriptionSchema = mongoose.Schema(
   {
-    businessCategory: {
-      type: String,
-    },
     name: {
       type: String,
       required: [true, "Please provide a name for this Subcription"],
-      trim: true,
-      minLength: [3, "Subcription name must be at least 3 characters."],
-      maxLength: [30, "Subcription name is to large"],
     },
     type: {
       type: String,

@@ -10,14 +10,14 @@ const adminRoute = require("./routes/admin.route");
 const vendorRoute = require("./routes/vendor.route");
 const productRoute = require("./routes/product.route");
 const subcriptionRoute = require("./routes/subcription.route");
-// const upcommingRoute = require("./routes/upcomming.route");
+const subcriptionNameRoute = require("./routes/subcription.name.route");
 
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/admin", adminRoute);
 app.use("/api/v1/vendor", vendorRoute);
 app.use("/api/v1/product", productRoute);
 app.use("/api/v1/subcription", subcriptionRoute);
-// app.use("/api/v1/upcomming", upcommingRoute);
+app.use("/api/v1/subcriptionName", subcriptionNameRoute);
 
 app.get("/", (req, res) => {
   res.send("Cars hat is working");
